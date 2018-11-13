@@ -13,9 +13,9 @@ namespace XUnitTest
         [Fact]
         public void UsernameWithLessThen3CharsShouldThrowError()
         {
-            User Sut = new User("q", "ValidPassword");
+            User Sut = new User("a", "ValidPassword");
             bool validate = Validator.TryValidateObject(Sut, new ValidationContext(Sut), null, true);
-
+       
             Assert.False(validate);
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Xunit;
@@ -11,12 +12,13 @@ namespace XUnitTest
     public class UserTest
     {
         [Fact]
-        public void UsernameWithLessThen3CharsShouldThrowError()
+        public void UsernameWithLessThen3CharsShouldNotBeValidated()
         {
+            List<ValidationResult> list = new List<ValidationResult>();
             User Sut = new User("a", "ValidPassword");
-            bool validate = Validator.TryValidateObject(Sut, new ValidationContext(Sut), null, true);
-       
-            Assert.False(validate);
+            Validator.TryValidateObject(Sut, new ValidationContext(Sut), list, true);
+           var Actual = list.FirstOrDefault(x => x.MemberNames.ToList()[0] == "Username");
+            Assert.NotNull(Actual);
         }
     }
 }

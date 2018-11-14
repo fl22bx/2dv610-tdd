@@ -14,22 +14,27 @@ namespace XUnitTest
         [Fact]
         public void UsernameWithLessThen3CharsShouldNotBeValidated()
         {
-            List<ValidationResult> list = new List<ValidationResult>();
-            User Sut = new User("a", "ValidPassword");
-            Validator.TryValidateObject(Sut, new ValidationContext(Sut), list, true);
-           var Actual = list.FirstOrDefault(x => x.MemberNames.ToList()[0] == "Username");
-            Assert.NotNull(Actual);
+           List<ValidationResult> list  = GetValidationResult("I", "ValidPassword");
+           var actual = list.FirstOrDefault(x => x.MemberNames.ToList()[0] == "Username");
+           Assert.NotNull(actual);
         }
 
         [Fact]
         public void PasswordWithLessThen6ShouldNotBeValidated()
         {
-            List<ValidationResult> list = new List<ValidationResult>();
-            User Sut = new User("ValidUsername", "I");
-            Validator.TryValidateObject(Sut, new ValidationContext(Sut), list, true);
-            var Actual = list.FirstOrDefault(x => x.MemberNames.ToList()[0] == "Password");
-            Assert.NotNull(Actual);
+            List<ValidationResult> list = GetValidationResult("ValidUsername", "I");
+            var actual = list.FirstOrDefault(x => x.MemberNames.ToList()[0] == "Password");
+            Assert.NotNull(actual);
         }
+
+        private List<ValidationResult> GetValidationResult(string Username, string Password)
+        {
+            List<ValidationResult> list = new List<ValidationResult>();
+            User Sut = new User(Username, Password);
+            Validator.TryValidateObject(Sut, new ValidationContext(Sut), list, true);
+            return list;
+        }
+
     }
 
 }

@@ -50,9 +50,20 @@ namespace _2dv610_TDD.Controllers
             return View();
         }
 
-        public Task<IActionResult> Register(UserViewModel Model)
+        [HttpPost]
+        public async Task<IActionResult> Register(UserViewModel Model)
         {
-            throw new NotImplementedException();
+            if (!ModelState.IsValid)
+                return View();
+
+            AuthUser newUser = new AuthUser();
+            newUser.UserName = Model.Username;
+            IdentityResult CreateNewUserResult = await UserManager.CreateAsync(newUser, Model.Password);
+
+            if (!CreateNewUserResult.Succeeded)
+                ModelState.AddModelError("", "Registration Failed. Please Try Again");
+           
+            return RedirectToAction("Index", "Home");
         }
     }
 }

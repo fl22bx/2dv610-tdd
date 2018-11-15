@@ -56,7 +56,7 @@ namespace XUnitTest
             var MockViewModel = new Mock<UserViewModel>();
             Sut.ModelState.AddModelError("Password", "Error");
             var Actual = Sut.Register(MockViewModel.Object);
-            Assert.IsType<ViewResult>(Actual);
+            Assert.IsType<ViewResult>(Actual.Result);
         }
 
         [Fact]

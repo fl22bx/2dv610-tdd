@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using _2dv610_TDD.Models;
+using _2dv610_TDD.Models.Authentication;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,10 +13,10 @@ namespace _2dv610_TDD.Controllers
 {
     public class AuthenticationController : Controller
     {
-        private UserManager<UserViewModel> UserManager { get; set; }
-        public SignInManager<UserViewModel> SignInManager { get; set; }
+        private UserManager<AuthUser> UserManager { get; set; }
+        public SignInManager<AuthUser> SignInManager { get; set; }
 
-        public AuthenticationController(UserManager<UserViewModel> userManager, SignInManager<UserViewModel> signInManager)
+        public AuthenticationController(UserManager<AuthUser> userManager, SignInManager<AuthUser> signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;

@@ -1,7 +1,16 @@
-﻿
+﻿@model _2dv610_TDD.Models.UserViewModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Register"; 
 }
 
 <h2>Register</h2>
 
+<Div>
+    <form asp-controller="AuthenticationController" asp-action="Register" method="post">
+        Username: <input asp-for="Username" />
+        <span asp-validation-for="Username" class="alert-danger"></span>
+        Password: <input asp-for="Password" />
+        <span asp-validation-for="Password" class="alert-danger"></span>
+        <button type="submit">Register</button>  
+    </form>
+</Div>

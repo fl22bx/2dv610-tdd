@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,37 +47,38 @@ namespace XUnitTest
             var Actual = Sut.Register();
             Assert.IsType<ViewResult>(Actual);
         }
+
     }
 }
 
 
 // Reference To Code
 // https://github.com/aspnet/Identity/issues/640
-public class FakeUserManager : UserManager<UserViewModel>
+public class FakeUserManager : UserManager<AuthUser>
 {
     public FakeUserManager()
-        : base(new Mock<IUserStore<UserViewModel>>().Object,
+        : base(new Mock<IUserStore<AuthUser>>().Object,
             new Mock<IOptions<IdentityOptions>>().Object,
-            new Mock<IPasswordHasher<UserViewModel>>().Object,
-            new IUserValidator<UserViewModel>[0],
-            new IPasswordValidator<UserViewModel>[0],
+            new Mock<IPasswordHasher<AuthUser>>().Object,
+            new IUserValidator<AuthUser>[0],
+            new IPasswordValidator<AuthUser>[0],
             new Mock<ILookupNormalizer>().Object,
             new Mock<IdentityErrorDescriber>().Object,
             new Mock<IServiceProvider>().Object,
-            new Mock<ILogger<UserManager<UserViewModel>>>().Object)
+            new Mock<ILogger<UserManager<AuthUser>>>().Object)
     { }
 }
 
 // Reference To Code
 // https://github.com/aspnet/Identity/issues/640
-public class FakeSignInManager : SignInManager<UserViewModel>
+public class FakeSignInManager : SignInManager<AuthUser>
 {
     public FakeSignInManager()
         : base(new FakeUserManager(),
             new Mock<IHttpContextAccessor>().Object,
-            new Mock<IUserClaimsPrincipalFactory<UserViewModel>>().Object,
+            new Mock<IUserClaimsPrincipalFactory<AuthUser>>().Object,
             new Mock<IOptions<IdentityOptions>>().Object,
-            new Mock<ILogger<SignInManager<UserViewModel>>>().Object,
+            new Mock<ILogger<SignInManager<AuthUser>>>().Object,
             new Mock<IAuthenticationSchemeProvider>().Object)
     {}
 }

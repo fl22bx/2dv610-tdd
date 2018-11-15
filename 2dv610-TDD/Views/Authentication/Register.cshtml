@@ -5,12 +5,14 @@
 
 <h2>Register</h2>
 
-<Div>
-    <form asp-controller="AuthenticationController" asp-action="Register" method="post">
-        Username: <input asp-for="Username" />
-        <span asp-validation-for="Username" class="alert-danger"></span>
-        Password: <input asp-for="Password" />
-        <span asp-validation-for="Password" class="alert-danger"></span>
-        <button type="submit">Register</button>  
+<Div class="mx-auto col-9">
+    <form asp-controller="Authentication" asp-action="Register" method="post" class="form">
+        <div class="form-group">
+            Username: <input asp-for="Username" class="form-control"/>
+            <span asp-validation-for="Username" class="alert-danger"></span>
+            Password: <input asp-for="Password" class="form-control"/>
+            <span asp-validation-for="Password" class="alert-danger"></span>
+            <button type="submit">Register</button>
+        </div>
     </form>
 </Div>

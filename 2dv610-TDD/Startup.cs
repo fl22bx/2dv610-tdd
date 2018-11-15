@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using _2dv610_TDD.Models;
+using _2dv610_TDD.Models.Authentication;
 using _2dv610_TDD.Models.Data;
 
 namespace _2dv610_TDD
@@ -27,7 +28,7 @@ namespace _2dv610_TDD
         {
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Congiguration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<User, IdentityRole>()
+            services.AddDefaultIdentity<AuthUser>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
             services.AddMvc();
@@ -41,6 +42,7 @@ namespace _2dv610_TDD
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseAuthentication();
             app.UseStaticFiles();
             app.UseMvc();
             app.UseMvcWithDefaultRoute();

@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Xunit;
+using _2dv610_TDD.Models.Authentication;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace XUnitTest

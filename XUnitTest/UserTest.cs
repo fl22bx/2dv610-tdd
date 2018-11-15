@@ -30,7 +30,9 @@ namespace XUnitTest
         private List<ValidationResult> GetValidationResult(string Username, string Password)
         {
             List<ValidationResult> list = new List<ValidationResult>();
-            User Sut = new User(Username, Password);
+            UserViewModel Sut = new UserViewModel();
+            Sut.Password = Password;
+            Sut.Username = Username;
             Validator.TryValidateObject(Sut, new ValidationContext(Sut), list, true);
             return list;
         }

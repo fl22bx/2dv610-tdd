@@ -12,10 +12,10 @@ namespace _2dv610_TDD.Controllers
 {
     public class AuthenticationController : Controller
     {
-        private UserManager<User> UserManager { get; set; }
-        public SignInManager<User> SignInManager { get; set; }
+        private UserManager<UserViewModel> UserManager { get; set; }
+        public SignInManager<UserViewModel> SignInManager { get; set; }
 
-        public AuthenticationController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AuthenticationController(UserManager<UserViewModel> userManager, SignInManager<UserViewModel> signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;

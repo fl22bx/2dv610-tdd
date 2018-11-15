@@ -8,17 +8,13 @@ using Microsoft.AspNetCore.Identity;
 
 namespace _2dv610_TDD.Models
 {
-    public class User
+    public class UserViewModel
     {
        [StringLength(20, MinimumLength=3)]
     public string Username { get; set; }
 
         [StringLength(100, MinimumLength = 3)]
     public string Password { get; set; }
-    public User(string username, string password)
-    {
-        Username = username;
-        Password = password;
-    }
+ 
 }
 }

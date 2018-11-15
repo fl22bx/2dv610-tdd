@@ -54,31 +54,31 @@ namespace XUnitTest
 
 // Reference To Code
 // https://github.com/aspnet/Identity/issues/640
-public class FakeUserManager : UserManager<User>
+public class FakeUserManager : UserManager<UserViewModel>
 {
     public FakeUserManager()
-        : base(new Mock<IUserStore<User>>().Object,
+        : base(new Mock<IUserStore<UserViewModel>>().Object,
             new Mock<IOptions<IdentityOptions>>().Object,
-            new Mock<IPasswordHasher<User>>().Object,
-            new IUserValidator<User>[0],
-            new IPasswordValidator<User>[0],
+            new Mock<IPasswordHasher<UserViewModel>>().Object,
+            new IUserValidator<UserViewModel>[0],
+            new IPasswordValidator<UserViewModel>[0],
             new Mock<ILookupNormalizer>().Object,
             new Mock<IdentityErrorDescriber>().Object,
             new Mock<IServiceProvider>().Object,
-            new Mock<ILogger<UserManager<User>>>().Object)
+            new Mock<ILogger<UserManager<UserViewModel>>>().Object)
     { }
 }
 
 // Reference To Code
 // https://github.com/aspnet/Identity/issues/640
-public class FakeSignInManager : SignInManager<User>
+public class FakeSignInManager : SignInManager<UserViewModel>
 {
     public FakeSignInManager()
         : base(new FakeUserManager(),
             new Mock<IHttpContextAccessor>().Object,
-            new Mock<IUserClaimsPrincipalFactory<User>>().Object,
+            new Mock<IUserClaimsPrincipalFactory<UserViewModel>>().Object,
             new Mock<IOptions<IdentityOptions>>().Object,
-            new Mock<ILogger<SignInManager<User>>>().Object,
+            new Mock<ILogger<SignInManager<UserViewModel>>>().Object,
             new Mock<IAuthenticationSchemeProvider>().Object)
     {}
 }

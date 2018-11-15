@@ -28,11 +28,15 @@ namespace XUnitTest
              SignInManagerMoq = new Mock<FakeSignInManager>();
         }
         [Fact]
-        public void LogInShouldBeSuccesfull()
+        public async void LogInShouldBeSuccesfull()
         {
+            SignInManagerMoq.Setup(x => x.PasswordSignInAsync("ValidUserName", "ValidPassword", false, false))
+                .ReturnsAsync(SignInResult.Success);
+
             AuthenticationController Sut = new AuthenticationController(UserManagerMoq.Object, SignInManagerMoq.Object);
-            RedirectToRouteResult actual = (RedirectToRouteResult)Sut.LogIn();
-            Assert.Equal("LoggedIn",actual.RouteValues["action"]);
+            var result = await Sut.LogIn();
+            RedirectToActionResult actual = (RedirectToActionResult)result;
+            Assert.Equal("LoggedIn", actual.ActionName);
         }
     }
 }
@@ -66,17 +70,6 @@ public class FakeSignInManager : SignInManager<User>
             new Mock<IOptions<IdentityOptions>>().Object,
             new Mock<ILogger<SignInManager<User>>>().Object,
             new Mock<IAuthenticationSchemeProvider>().Object)
-    {
-
-
-    }
-
-    // MyCode
-    public override async Task<SignInResult> PasswordSignInAsync(string userName, string password, bool isPersistent, bool lockoutOnFailure)
-    {
-        Mock<SignInResult> SignInResultMock = new Mock<SignInResult>();
-        SignInResultMock.Setup(moq => moq.Succeeded).Returns(true);
-
-        return SignInResultMock.Object;
-    }
+    {}
 }
+

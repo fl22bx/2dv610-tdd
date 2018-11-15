@@ -11,15 +11,38 @@ using _2dv610_TDD.Models;
 namespace _2dv610_TDD.Controllers
 {
     public class AuthenticationController : Controller
-{
-    public AuthenticationController(UserManager<User> userManager, SignInManager<User> signInManager)
     {
+        private UserManager<User> UserManager { get; set; }
+        public SignInManager<User> SignInManager { get; set; }
 
-    }
-    public IActionResult LogIn()
-    {
-        return View();
-    }
+        public AuthenticationController(UserManager<User> userManager, SignInManager<User> signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
 
+        public async Task<IActionResult> LogIn()
+        {
+            // ToDo: HardCodedUser
+            var result = await SignInManager.PasswordSignInAsync("ValidUserName", "ValidPassword", false, false);
+
+            if (result.Succeeded)
+                return RedirectToAction("LoggedIn");
+
+            return RedirectToAction("LogInForm");
+
+
+        }
+
+        public IActionResult LoggedIn()
+        {
+            return StatusCode(200);
+        }
+
+        public IActionResult LogInForm()
+        {
+            return StatusCode(200);
+        }
     }
 }
+

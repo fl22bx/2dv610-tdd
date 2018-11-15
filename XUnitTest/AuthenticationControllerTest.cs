@@ -45,8 +45,8 @@ namespace XUnitTest
         public void ShouldReturnRegisterView()
         {
             AuthenticationController Sut = new AuthenticationController(UserManagerMoq.Object, SignInManagerMoq.Object);
-            ViewResult Actual = (ViewResult)Sut.Register();
-            Assert.True(Actual.ViewName == "Index");
+            var Actual = Sut.Register();
+            Assert.IsType<ViewResult>(Actual);
         }
     }
 }

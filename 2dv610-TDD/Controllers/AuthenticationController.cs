@@ -50,6 +50,10 @@ namespace _2dv610_TDD.Controllers
             return View();
         }
 
+        public Task<IActionResult> Register(UserViewModel Model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

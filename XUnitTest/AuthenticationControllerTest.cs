@@ -48,8 +48,34 @@ namespace XUnitTest
             Assert.IsType<ViewResult>(Actual);
         }
 
+        [Fact]
+        public void RegisterWithInValidCredentialsShouldReturnViewResult()
+        {
+            var Sut = new AuthenticationController(UserManagerMoq.Object, SignInManagerMoq.Object);
+
+            var MockViewModel = new Mock<UserViewModel>();
+            Sut.ModelState.AddModelError("Password", "Error");
+            var Actual = Sut.Register(MockViewModel.Object);
+            Assert.IsType<ViewResult>(Actual);
+        }
+
+        [Fact]
+        public void RegisterWithValidCredentialsShouldReturnRedirectResult()
+        {
+            var ModelMock = Mock.Of<UserViewModel>(x =>
+                x.Username == "ValidUsername" &&
+                x.Password == "ValidPassword");
+
+            UserManagerMoq.Setup(x => x.CreateAsync(It.IsAny<AuthUser>(), It.IsAny<string>()))
+                .ReturnsAsync(IdentityResult.Success);
+            var Sut = new AuthenticationController(UserManagerMoq.Object, SignInManagerMoq.Object);
+            var Result = Sut.Register(ModelMock);
+            Assert.IsType<RedirectToActionResult>(Result.Result);
+        }
+
     }
 }
+
 
 
 // Reference To Code

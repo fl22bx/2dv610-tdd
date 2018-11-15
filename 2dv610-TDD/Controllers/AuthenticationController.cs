@@ -43,6 +43,11 @@ namespace _2dv610_TDD.Controllers
         {
             return StatusCode(200);
         }
+
+        public IActionResult Register()
+        {
+            return StatusCode(200);
+        }
     }
 }
 

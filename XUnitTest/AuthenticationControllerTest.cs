@@ -40,6 +40,14 @@ namespace XUnitTest
 
             Assert.Equal("LoggedIn", actual.ActionName);
         }
+
+        [Fact]
+        public void ShouldReturnRegisterView()
+        {
+            AuthenticationController Sut = new AuthenticationController(UserManagerMoq.Object, SignInManagerMoq.Object);
+            ViewResult Actual = (ViewResult)Sut.Register();
+            Assert.True(Actual.ViewName == "Index");
+        }
     }
 }
 

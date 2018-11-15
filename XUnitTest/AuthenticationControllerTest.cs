@@ -36,6 +36,7 @@ namespace XUnitTest
             AuthenticationController Sut = new AuthenticationController(UserManagerMoq.Object, SignInManagerMoq.Object);
             var result = await Sut.LogIn();
             RedirectToActionResult actual = (RedirectToActionResult)result;
+
             Assert.Equal("LoggedIn", actual.ActionName);
         }
     }

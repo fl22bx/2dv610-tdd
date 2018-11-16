@@ -31,8 +31,7 @@ namespace _2dv610_TDD.Controllers
         [HttpPost]
         public async Task<IActionResult> LogIn(UserViewModel Model)
         {
-            // ToDo: HardCodedUser
-            var result = await SignInManager.PasswordSignInAsync("ValidUserName", "ValidPassword", false, false);
+            var result = await SignInManager.PasswordSignInAsync(Model.Username, Model.Password, false, false);
 
             if (result.Succeeded)
                 return RedirectToAction("LoggedIn");

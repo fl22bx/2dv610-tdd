@@ -33,6 +33,8 @@ namespace XUnitTest
             SignInManagerMoq.Setup(x => x.PasswordSignInAsync("ValidUserName", "ValidPassword", false, false))
                 .ReturnsAsync(SignInResult.Success);
             var MockViewModel = Mock.Of<UserViewModel>();
+            MockViewModel.Password = "ValidPassword";
+            MockViewModel.Username = "ValidUserName";
             AuthenticationController Sut = new AuthenticationController(UserManagerMoq.Object, SignInManagerMoq.Object);
             var result = await Sut.LogIn(MockViewModel);
             RedirectToActionResult actual = (RedirectToActionResult)result;

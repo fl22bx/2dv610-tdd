@@ -25,7 +25,7 @@ namespace _2dv610_TDD.Controllers
         [HttpGet]
         public IActionResult LogIn()
         {
-            return StatusCode(500);
+            return View();
         }
 
         [HttpPost]

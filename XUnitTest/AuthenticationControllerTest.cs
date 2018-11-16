@@ -41,7 +41,7 @@ namespace XUnitTest
         }
 
         [Fact]
-        public void LogInVireShouldBeReturned()
+        public void LogInViewShouldBeReturned()
         {
             AuthenticationController Sut = new AuthenticationController(UserManagerMoq.Object, SignInManagerMoq.Object);
             var Actual =Sut.LogIn();

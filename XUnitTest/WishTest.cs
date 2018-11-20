@@ -52,5 +52,13 @@ namespace XUnitTest
             Sut.Description = "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem";
             Assert.NotNull(Sut.Description);
         }      
+
+        [Fact]
+        public void WishNameShouldNutBeNull()
+        {
+
+            Sut.Name = "Radio";
+            Assert.NotNull(Sut.Name);
+        }
     }
 }

@@ -19,5 +19,11 @@ namespace _2dv610_TDD.Models.WishList
     {
             GetWishList.Add(wish);
     }
+
+    public decimal GetPrice(CategoriesEnum Categori)
+    {
+
+            throw new NotImplementedException();
+    }
 }
 }

@@ -25,6 +25,7 @@ namespace _2dv610_TDD.Models.WishList
 
     public string Name { get; set; }
 
+    public string AuthorId { get; set; }
 
     public Wish()
     {

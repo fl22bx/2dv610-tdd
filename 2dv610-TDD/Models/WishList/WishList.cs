@@ -9,13 +9,13 @@ namespace _2dv610_TDD.Models.WishList
 {
     public class WishList
 {
-    public List<string> GetWishList { get; set; }
+    public List<Wish> GetWishList { get;}
     public WishList()
     {
-        GetWishList = new List<string>();
+        GetWishList = new List<Wish>();
     }
 
-    public void AddWish(string wish)
+    public void AddWish(Wish wish)
     {
             GetWishList.Add(wish);
     }

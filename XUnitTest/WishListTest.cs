@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Moq;
 using Xunit;
 using _2dv610_TDD.Models.WishList;
 
@@ -12,11 +13,11 @@ namespace XUnitTest
         public void ShouldReturnListWithWishes()
         {
             WishList Sut  = new WishList();
+            var wishMock = Mock.Of<Wish>();
+            Sut.AddWish(wishMock);
+            Sut.AddWish(wishMock);
 
-            Sut.AddWish("Wish1");
-            Sut.AddWish("Wish2");
-
-            List<string> Actual = Sut.GetWishList;
+            List<Wish> Actual = Sut.GetWishList;
 
             Assert.Equal(2 , Actual.Count);
 

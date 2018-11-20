@@ -8,6 +8,7 @@ namespace _2dv610_TDD.Models.WishList
     public class Wish
 {
     public CategoriesEnum Category { get; set; }
+    public decimal Price { get; set; }
     public Wish()
     {
       

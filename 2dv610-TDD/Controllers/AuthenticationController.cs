@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using _2dv610_TDD.Models;
 using _2dv610_TDD.Models.Authentication;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace _2dv610_TDD.Controllers
 {

@@ -35,14 +35,12 @@ namespace _2dv610_TDD
 
             services.Configure<IdentityOptions>(options =>
             {
-                // Make really weak passwords possible
+
                 options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 3;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
-
-                // Make sure users have unique emails
                 options.User.RequireUniqueEmail = false;
             });
         }

@@ -11,12 +11,11 @@ namespace _2dv610_TDD.Controllers
 {
     public WishListController()
     {
-        throw new NotImplementedException();
     }
 
     public IActionResult WishList()
     {
-        return StatusCode(500);
+        return View();
     }
 }
 }

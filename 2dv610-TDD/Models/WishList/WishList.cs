@@ -22,8 +22,16 @@ namespace _2dv610_TDD.Models.WishList
 
     public decimal GetPrice(CategoriesEnum Categori)
     {
+        List<Wish> WishList = GetWishList;
 
-            throw new NotImplementedException();
+        var SortedAfterCategorie =
+            (from wish in WishList
+                where wish.Category == Categori
+                select wish.Price)
+            .Sum();
+        return SortedAfterCategorie;
+
+
     }
 }
 }

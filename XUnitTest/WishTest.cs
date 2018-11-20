@@ -42,7 +42,6 @@ namespace XUnitTest
         [Fact]
         public void PriceCantBeNegative()
         {
-            Sut.Price = -1;
             Assert.Throws<ArgumentOutOfRangeException>(() => Sut.Price = -1);
         }
     }

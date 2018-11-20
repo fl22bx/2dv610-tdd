@@ -10,7 +10,7 @@ namespace _2dv610_TDD.Models.WishList
     public CategoriesEnum Category { get; set; }
     public Wish()
     {
-        throw new NotImplementedException();
+      
     }
 }
 }

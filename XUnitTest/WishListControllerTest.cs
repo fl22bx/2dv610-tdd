@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Xunit;
 using _2dv610_TDD.Controllers;
+using _2dv610_TDD.Models.WishList;
 
 namespace XUnitTest
 {
@@ -13,7 +14,8 @@ namespace XUnitTest
         public WishListController Sut { get; set; }
         public WishListControllerTest()
         {
-            Sut = new WishListController();
+            WishListFactory FactoryMock = new WishListFactory();
+            Sut = new WishListController(FactoryMock);
         }
 
         [Fact]

@@ -30,5 +30,13 @@ namespace XUnitTest
             Assert.Equal(CategoriesEnum.Read, Sut.Category);
         }
 
+        [Fact]
+        public void ShouldReturnPriceOfWish()
+        {
+
+            Sut.Price = 29;
+            Assert.Equal(29, Sut.Price);
+            Assert.IsType<Decimal>(Sut.Price);
+        }
     }
 }

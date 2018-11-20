@@ -21,6 +21,8 @@ namespace _2dv610_TDD.Models.WishList
         }
     }
 
+    public string Description { get; set; }
+
 
     public Wish()
     {

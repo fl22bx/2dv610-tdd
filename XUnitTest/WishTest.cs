@@ -60,5 +60,11 @@ namespace XUnitTest
             Sut.Name = "Radio";
             Assert.NotNull(Sut.Name);
         }
+
+        public void AuthorId()
+        {
+            Sut.AuthorId = "d883f4d2 - 3986 - 4840 - b9cb - ff4db8d67d66";
+            Assert.NotNull(Sut.Name);
+        }
     }
 }

@@ -12,12 +12,12 @@ namespace _2dv610_TDD.Models.WishList
     public List<string> GetWishList { get; set; }
     public WishList()
     {
-        
+        GetWishList = new List<string>();
     }
 
     public void AddWish(string wish)
     {
-
+            GetWishList.Add(wish);
     }
 }
 }

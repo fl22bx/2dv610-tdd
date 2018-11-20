@@ -44,5 +44,13 @@ namespace XUnitTest
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => Sut.Price = -1);
         }
+
+        [Fact]
+        public void DescriptionShouldBeSet()
+        {
+
+            Sut.Description = "Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem";
+            Assert.NotNull(Sut.Description);
+        }      
     }
 }

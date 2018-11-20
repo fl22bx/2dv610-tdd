@@ -20,6 +20,8 @@ namespace _2dv610_TDD.Models.WishList
             price = value;
         }
     }
+
+
     public Wish()
     {
       

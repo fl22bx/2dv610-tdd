@@ -38,5 +38,12 @@ namespace XUnitTest
             Assert.Equal(29, Sut.Price);
             Assert.IsType<Decimal>(Sut.Price);
         }
+
+        [Fact]
+        public void PriceCantBeNegative()
+        {
+            Sut.Price = -1;
+            Assert.Throws<ArgumentOutOfRangeException>(() => Sut.Price = -1);
+        }
     }
 }

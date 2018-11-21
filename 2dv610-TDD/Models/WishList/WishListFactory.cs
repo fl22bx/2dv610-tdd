@@ -9,8 +9,13 @@ namespace _2dv610_TDD.Models.WishList
     {
         public WishList NewWishList(List<Wish> wishes)
         {
+            WishList Result = new WishList();
+            foreach (Wish wish in wishes)
+            {
+                Result.AddWish(wish);
+            }
 
-            throw new NotImplementedException();
+            return Result;
         }
     }
 }

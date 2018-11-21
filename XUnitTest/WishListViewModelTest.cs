@@ -17,8 +17,8 @@ namespace XUnitTest
 
             var wishListMock = Mock.Of<WishList>();
             Sut.NeedWishes = wishListMock;
-            Sut.WantdWishes = wishListMock;
-
+            Sut.WantWishes = wishListMock;
+            Sut.readWishes = wishListMock;
         }
 
         [Fact]
@@ -32,6 +32,14 @@ namespace XUnitTest
         public void wantWishListNotNull()
         {
             Assert.NotNull(Sut.WantWishes);
+
+        }
+
+
+        [Fact]
+        public void readtWishListNotNull()
+        {
+            Assert.NotNull(Sut.readWishes);
 
         }
     }

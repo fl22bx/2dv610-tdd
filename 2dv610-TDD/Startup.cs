@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using _2dv610_TDD.Models;
 using _2dv610_TDD.Models.Authentication;
 using _2dv610_TDD.Models.Data;
+using _2dv610_TDD.Models.WishList;
 
 namespace _2dv610_TDD
 {
@@ -32,6 +33,8 @@ namespace _2dv610_TDD
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
             services.AddMvc();
+
+            services.AddTransient<WishListFactory>();
 
             services.Configure<IdentityOptions>(options =>
             {

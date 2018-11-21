@@ -1,0 +1,61 @@
+﻿
+body, html {
+    min-height: 100% !important;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.wishList {
+    margin: auto;
+    background-image: url('./img/paper-68829_1280.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 900px;
+    height: 100%;
+    padding: 75px;
+    padding-top: 30px;
+    font-family: "Mountains of Christmas";
+    font-size: 24px;
+}
+
+    .wishList h1 {
+        font-size: 60px;
+        font-weight: bolder;
+        color: darkred;
+        text-align: center;
+
+    }
+
+
+
+    .wishList h2 {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .wishList input {
+        border: 0;
+        outline: 0;
+        background: transparent;
+        border-bottom: 1px solid black;
+        max-width: 50%;
+    }
+
+    .price {
+        width: 20% !important;
+    }
+
+    span {
+        display: block;
+    }
+
+.save {
+    margin: 40px;
+    margin-left: 80%;
+    padding: 0px 50px 0px 50px;
+    background-color: darkred;
+    color: white;
+}

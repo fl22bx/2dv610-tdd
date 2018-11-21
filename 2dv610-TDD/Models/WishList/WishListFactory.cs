@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 namespace _2dv610_TDD.Models.WishList
 {
     public class WishListFactory
-{
-    public WishListFactory()
     {
-        
+        public WishList NewWishList(List<Wish> wishes)
+        {
+
+            throw new NotImplementedException();
+        }
     }
-}
 }

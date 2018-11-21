@@ -18,18 +18,19 @@ namespace _2dv610_TDD.Models.WishList
 
             return Result;
         }
-
+/*
         public WishListVieModel NewWishListViewModel(List<Wish> need, List<Wish> want, List<Wish> read, List<Wish> wear)
         {
 
-            WishListVieModel Result = new WishListVieModel();
+           // WishListVieModel Result = new WishListVieModel();
 
-            Result.NeedWishes = NewWishList(need);
-            Result.WantWishes = NewWishList(want);
-            Result.readWishes = NewWishList(read);
-            Result.WearWishes = NewWishList(wear);
+          //  Result.NeedWishes = NewWishList(need);
+            //Result.WantWishes = NewWishList(want);
+            //Result.readWishes = NewWishList(read);
+            //Result.WearWishes = NewWishList(wear);
 
-            return Result;
+//            return Result;
         }
+        */
     }
 }

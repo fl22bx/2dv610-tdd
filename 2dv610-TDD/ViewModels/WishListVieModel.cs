@@ -8,10 +8,62 @@ namespace _2dv610_TDD.ViewModels
 {
     public class WishListVieModel
 {
-    public WishList NeedWishes { get; set; }
-    public WishList WantWishes { get; set; }
+    public WishListVieModel()
+    {
+        NeedWishes = new WishList()
+        {
+            GetWishList = new List<Wish>()
+            {
+                new Wish() { Category = CategoriesEnum.Need },
+                new Wish() { Category = CategoriesEnum.Need },
+                new Wish() { Category = CategoriesEnum.Need },
+                new Wish() { Category = CategoriesEnum.Need },
+                new Wish() { Category = CategoriesEnum.Need }
+            }
+        };
 
-    public WishList readWishes { get; set; }
-    public WishList WearWishes { get; set; }
+        WantWishes = new WishList()
+        {
+            GetWishList = new List<Wish>()
+            {
+                new Wish() { Category = CategoriesEnum.Want },
+                new Wish() { Category = CategoriesEnum.Want },
+                new Wish() { Category = CategoriesEnum.Want },
+                new Wish() { Category = CategoriesEnum.Want },
+                new Wish() { Category = CategoriesEnum.Want }
+            }
+        };
+
+        WearWishes = new WishList()
+        {
+            GetWishList = new List<Wish>()
+            {
+                new Wish() { Category = CategoriesEnum.Wear },
+                new Wish() { Category = CategoriesEnum.Wear },
+                new Wish() { Category = CategoriesEnum.Wear },
+                new Wish() { Category = CategoriesEnum.Wear },
+                new Wish() { Category = CategoriesEnum.Wear }
+            }
+        };
+
+
+        readWishes = new WishList()
+        {
+            GetWishList = new List<Wish>()
+            {
+                new Wish() { Category = CategoriesEnum.Read },
+                new Wish() { Category = CategoriesEnum.Read },
+                new Wish() { Category = CategoriesEnum.Read },
+                new Wish() { Category = CategoriesEnum.Read },
+                new Wish() { Category = CategoriesEnum.Read }
+            }
+        };
+        }
+        
+        public WishList NeedWishes { get; set; }
+        public WishList WantWishes { get; set; }
+
+         public WishList readWishes { get; set; }
+          public WishList WearWishes { get; set; }
 }
 }

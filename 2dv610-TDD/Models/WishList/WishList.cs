@@ -9,7 +9,7 @@ namespace _2dv610_TDD.Models.WishList
 {
     public class WishList
 {
-    public List<Wish> GetWishList { get;}
+    public List<Wish> GetWishList { get; set; }
     public WishList()
     {
         GetWishList = new List<Wish>();

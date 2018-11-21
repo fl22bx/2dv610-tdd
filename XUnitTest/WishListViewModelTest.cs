@@ -19,6 +19,7 @@ namespace XUnitTest
             Sut.NeedWishes = wishListMock;
             Sut.WantWishes = wishListMock;
             Sut.readWishes = wishListMock;
+            Sut.WearWishes = wishListMock;
         }
 
         [Fact]
@@ -40,6 +41,13 @@ namespace XUnitTest
         public void readtWishListNotNull()
         {
             Assert.NotNull(Sut.readWishes);
+
+        }
+
+        [Fact]
+        public void WearWishListNotNull()
+        {
+            Assert.NotNull(Sut.WearWishes);
 
         }
     }

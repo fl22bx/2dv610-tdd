@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using _2dv610_TDD.ViewModels;
 
 namespace _2dv610_TDD.Models.WishList
 {
@@ -16,6 +17,12 @@ namespace _2dv610_TDD.Models.WishList
             }
 
             return Result;
+        }
+
+        public WishListVieModel NewWishListViewModel(List<Wish> need, List<Wish> want, List<Wish> read, List<Wish> wear)
+        {
+
+            throw new NotImplementedException();
         }
     }
 }

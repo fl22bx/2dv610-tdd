@@ -8,7 +8,7 @@ using _2dv610_TDD.ViewModels;
 
 namespace XUnitTest
 {
-    class WishListViewModelTest
+    public class WishListViewModelTest
     {
         public WishListVieModel Sut { get; set; }
         public WishListViewModelTest()
@@ -19,6 +19,7 @@ namespace XUnitTest
             Sut.NeedWishes = wishListMock;
         }
 
+        [Fact]
         public void NeedWishListNotNull()
         {
             Assert.NotNull(Sut.NeedWishes);

@@ -9,5 +9,6 @@ namespace _2dv610_TDD.ViewModels
     public class WishListVieModel
 {
     public WishList NeedWishes { get; set; }
+    public WishList WantWishes { get; set; }
 }
 }

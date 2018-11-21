@@ -31,7 +31,7 @@ namespace XUnitTest
         [Fact]
         public void wantWishListNotNull()
         {
-            Assert.NotNull(Sut.WantdWishes);
+            Assert.NotNull(Sut.WantWishes);
 
         }
     }

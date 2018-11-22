@@ -24,67 +24,44 @@ namespace XUnitTest
 
             public IAppContext DbContextMockSetub()
             {
-                var need = Mock.Of<Wish>();
-                need.Price = 33;
-                need.Category = CategoriesEnum.Need;
-                need.Name = "Something i need";
 
-                var want = Mock.Of<Wish>();
-                need.Price = 33;
-                need.Category = CategoriesEnum.Want;
-                need.Name = "Something i want";
+                var wishMockNeed = Mock.Of<Wish>();
+                wishMockNeed.Price = 10;
+                wishMockNeed.Category = CategoriesEnum.Need;
 
-                var read = Mock.Of<Wish>();
-                need.Price = 150;
-                need.Category = CategoriesEnum.Read;
-                need.Name = "Something i need";
+                var wishMockWant = Mock.Of<Wish>();
+                wishMockWant.Price = 20;
+                wishMockWant.Category = CategoriesEnum.Want;
 
-                var wear = Mock.Of<Wish>();
-                need.Price = 23;
-                need.Category = CategoriesEnum.Wear;
-                need.Name = "Something i wear";
+                var wishMockWear = Mock.Of<Wish>();
+                wishMockWear.Price = 30;
+                wishMockWear.Category = CategoriesEnum.Wear;
+
+                var wishMockRead = Mock.Of<Wish>();
+                wishMockRead.Price = 40;
+                wishMockRead.Category = CategoriesEnum.Read;
 
                 var DbResultMock = new List<Wish>
-            {
-                need,
-                want,
-                read,
-                wear,
+                        {
+                            wishMockNeed,
+                            wishMockWant,
+                            wishMockWear,
+                            wishMockRead,
 
-                need,
-                want,
-                read,
-                wear,
+                            wishMockNeed,
+                            wishMockWant,
+                            wishMockWear,
+                            wishMockRead,
 
-                need,
-                want,
-                read,
-                wear,
+                            wishMockNeed,
+                            wishMockWant,
+                            wishMockWear,
+                            wishMockRead,
 
-                need,
-                want,
-                read,
-                wear,
-
-                need,
-                want,
-                read,
-                wear,
-
-                need,
-                want,
-                read,
-                wear,
-
-                need,
-                want,
-                read,
-                wear,
-
-                need,
-                want,
-                read,
-                wear,
+                            wishMockNeed,
+                            wishMockWant,
+                            wishMockWear,
+                            wishMockRead,
             }.AsQueryable();
 
                 var WishDbMock = new Mock<DbSet<Wish>>();
@@ -134,10 +111,10 @@ namespace XUnitTest
             public void ShouldReturnPopulatedWishViewModel()
             {
                 WishListVieModel Actual = Sut.PopulateWishListViewModel();
-                Assert.Equal(8, Actual.NeedWishes.GetWishList.Count);
-                Assert.Equal(8, Actual.WantWishes.GetWishList.Count);
-                Assert.Equal(8, Actual.WearWishes.GetWishList.Count);
-                Assert.Equal(8, Actual.readWishes.GetWishList.Count);
+                Assert.Equal(4, Actual.NeedWishes.GetWishList.Count);
+                Assert.Equal(4, Actual.WantWishes.GetWishList.Count);
+                Assert.Equal(4, Actual.WearWishes.GetWishList.Count);
+                Assert.Equal(4, Actual.readWishes.GetWishList.Count);
             }
 
 

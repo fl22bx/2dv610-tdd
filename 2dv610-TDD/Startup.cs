@@ -35,6 +35,7 @@ namespace _2dv610_TDD
             services.AddMvc();
 
             services.AddTransient<WishListFactory>();
+            services.AddTransient<IAppContext>();
 
             services.Configure<IdentityOptions>(options =>
             {

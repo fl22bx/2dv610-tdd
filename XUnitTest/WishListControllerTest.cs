@@ -26,7 +26,7 @@ namespace XUnitTest
         public WishListControllerTest()
         {
             var test = new Mock<IAppContext>();
-            Mock<FakeUserManager> UserManagerMoq = new Mock<FakeUserManager>();
+            Mock<UserManagerStub> UserManagerMoq = new Mock<UserManagerStub>();
             WishListFactory FactoryMock = new WishListFactory(test.Object);
 
             Sut = new WishListController(FactoryMock, UserManagerMoq.Object);

@@ -19,13 +19,13 @@ namespace XUnitTest
 {
     public class AuthenticationControllerTest
     {
-        public Mock<FakeUserManager> UserManagerMoq { get; set; }
-        public Mock<FakeSignInManager> SignInManagerMoq { get; set; }
+        public Mock<UserManagerStub> UserManagerMoq { get; set; }
+        public Mock<SignInManagerStub> SignInManagerMoq { get; set; }
 
         public AuthenticationControllerTest()
         {
-             UserManagerMoq = new Mock<FakeUserManager>();
-             SignInManagerMoq = new Mock<FakeSignInManager>();
+             UserManagerMoq = new Mock<UserManagerStub>();
+             SignInManagerMoq = new Mock<SignInManagerStub>();
         }
         [Fact]
         public async void LogInShouldBeSuccesfull()
@@ -88,34 +88,4 @@ namespace XUnitTest
 
 
 
-// Reference To Code
-// https://github.com/aspnet/Identity/issues/640
-public class FakeUserManager : UserManager<AuthUser>
-{
-    public FakeUserManager()
-        : base(new Mock<IUserStore<AuthUser>>().Object,
-            new Mock<IOptions<IdentityOptions>>().Object,
-            new Mock<IPasswordHasher<AuthUser>>().Object,
-            new IUserValidator<AuthUser>[0],
-            new IPasswordValidator<AuthUser>[0],
-            new Mock<ILookupNormalizer>().Object,
-            new Mock<IdentityErrorDescriber>().Object,
-            new Mock<IServiceProvider>().Object,
-            new Mock<ILogger<UserManager<AuthUser>>>().Object)
-    { }
-}
-
-// Reference To Code
-// https://github.com/aspnet/Identity/issues/640
-public class FakeSignInManager : SignInManager<AuthUser>
-{
-    public FakeSignInManager()
-        : base(new FakeUserManager(),
-            new Mock<IHttpContextAccessor>().Object,
-            new Mock<IUserClaimsPrincipalFactory<AuthUser>>().Object,
-            new Mock<IOptions<IdentityOptions>>().Object,
-            new Mock<ILogger<SignInManager<AuthUser>>>().Object,
-            new Mock<IAuthenticationSchemeProvider>().Object)
-    {}
-}
 

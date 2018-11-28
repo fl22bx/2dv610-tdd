@@ -26,6 +26,7 @@ namespace _2dv610_TDD.Controllers
         [Route("/YourWishlist")]
         public IActionResult WishList(string msg = null)
         {
+            ViewBag.msg = msg;
             return View();
 
         }

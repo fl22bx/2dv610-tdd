@@ -3,6 +3,13 @@
 <div class="wishList">
     <h1>Merry Christmas</h1>
     <h2>Letter To Santa</h2>
+    @if (ViewBag.msg != null)
+    {
+        <div class="alert alert-success">
+            @ViewBag.msg
+        </div>
+    }
+
     <form asp-controller="WishList" asp-action="test" method="post">
         <div class="row">
             <fieldset class="col">

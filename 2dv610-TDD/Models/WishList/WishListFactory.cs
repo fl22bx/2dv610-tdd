@@ -42,7 +42,19 @@ namespace _2dv610_TDD.Models.WishList
 
         public WishListVieModel PopulateWishListViewModel()
         {
-           
+            WishListVieModel Result = new WishListVieModel();
+
+            List<Wish> need = EntityQuery(CategoriesEnum.Need);
+            List<Wish> want = EntityQuery(CategoriesEnum.Want);
+            List<Wish> wear = EntityQuery(CategoriesEnum.Wear);
+            List<Wish> read = EntityQuery(CategoriesEnum.Read);
+
+            Result.NeedWishes = NewWishList(need);
+            Result.WantWishes = NewWishList(want);
+            Result.WearWishes = NewWishList(wear);
+            Result.readWishes = NewWishList(read);
+
+            return Result;
         }
 
         private List<Wish> EntityQuery(CategoriesEnum cat)

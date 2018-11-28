@@ -33,27 +33,26 @@ namespace _2dv610_TDD.Controllers
         [Route("/SaveWishList")]
         public RedirectToActionResult Save(WishListVieModel model)
         {
-            foreach (Wish wish in model.WantWishes.GetWishList)
-            {
-                dbContext.Wishes.Add(wish);
-            }
-
-            foreach (Wish wish in model.NeedWishes.GetWishList)
-            {
-                dbContext.Wishes.Add(wish);
-            }
-            foreach (Wish wish in model.WearWishes.GetWishList)
-            {
-                dbContext.Wishes.Add(wish);
-            }
-
-            foreach (Wish wish in model.readWishes.GetWishList)
-            {
-                dbContext.Wishes.Add(wish);
-            }
+          
+            AddToContext(model.WantWishes.GetWishList);
+            AddToContext(model.NeedWishes.GetWishList);
+            AddToContext(model.WearWishes.GetWishList);
+            AddToContext(model.readWishes.GetWishList);
 
             int save = dbContext.SaveChanges();
-            return RedirectToAction("WishList", new {msg = "Changes Saved"});
+            string msg = null;
+
+            if (save > 0)
+                msg = "Changes Saved";
+            return RedirectToAction("WishList", new { msg });
+        }
+
+        private void AddToContext(List<Wish> model)
+        {
+            foreach (Wish wish in model)
+            {
+                dbContext.Wishes.Add(wish);
+            }
         }
 
     }

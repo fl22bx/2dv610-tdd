@@ -45,6 +45,16 @@ namespace XUnitTest
         }
 
         [Fact]
+        public void WishListViewBagTest()
+        {
+            string Expected = "Message To Send";
+            var Actual = Sut.WishList(Expected);
+            string viewbag = Sut.ViewBag.msg;
+
+            Assert.Equal(Expected, viewbag);
+        }
+
+        [Fact]
         public void PostSaveWishListTest()
         { 
       

@@ -9,7 +9,7 @@ using _2dv610_TDD.Models.WishList;
 
 namespace _2dv610_TDD.Models.Data
 {
-    public class AppDbContext : IdentityDbContext<AuthUser>
+    public class AppDbContext : IdentityDbContext<AuthUser> , IAppContext
     {
         public AppDbContext(DbContextOptions options) 
             : base(options)

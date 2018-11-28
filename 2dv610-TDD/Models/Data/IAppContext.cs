@@ -10,5 +10,6 @@ namespace _2dv610_TDD.Models.Data
     public interface IAppContext
     {
         DbSet<Wish> Wishes { get; set; }
+        int SaveChanges();
     }
 }

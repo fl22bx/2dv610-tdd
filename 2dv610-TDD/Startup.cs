@@ -35,7 +35,8 @@ namespace _2dv610_TDD
             services.AddMvc();
 
             services.AddTransient<WishListFactory>();
-            services.AddTransient<IAppContext>();
+            services.AddTransient<IAppContext, AppDbContext>();
+            services.AddSession();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -57,10 +58,12 @@ namespace _2dv610_TDD
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSession();
             app.UseAuthentication();
             app.UseStaticFiles();
             app.UseMvc();
             app.UseMvcWithDefaultRoute();
+            app.UseCookiePolicy();
         }
     }
 }

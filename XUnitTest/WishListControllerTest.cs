@@ -31,6 +31,8 @@ namespace XUnitTest
             Mock<UserManagerStub> UserManagerMoq = new Mock<UserManagerStub>();
             WishListFactory FactoryMock = new WishListFactory(context);
 
+            Mock.Get(context).Setup(x => x.SaveChanges()).Returns(1);
+
             Sut = new WishListController(FactoryMock, UserManagerMoq.Object, context);
         }
 
@@ -61,8 +63,7 @@ namespace XUnitTest
             var Result = Sut.Save(mockModel);
 
             RedirectToActionResult Actual = (RedirectToActionResult)Result;
-
-            Assert.NotNull(Sut.TempData["flash"]);
+            Assert.NotNull(Actual.RouteValues.Values);
             Assert.Equal("WishList", Actual.ActionName);
 
         }

@@ -15,23 +15,45 @@ namespace _2dv610_TDD.Controllers
 {
     public class WishListController : Controller
     {
-        public AppDbContext dbContext { get; set; }
+        public IAppContext dbContext { get; set; }
         private WishListFactory WishListFactory { get; }
         public WishListController(WishListFactory factory, UserManager<AuthUser> userManager, IAppContext context)
         {
             WishListFactory = factory;
+            dbContext = context;
         }
 
         [Route("/YourWishlist")]
-        public IActionResult WishList()
+        public IActionResult WishList(string msg = null)
         {
             return View();
 
         }
 
-        public IActionResult Save(WishListVieModel model)
+        [Route("/SaveWishList")]
+        public RedirectToActionResult Save(WishListVieModel model)
         {
-            return StatusCode(500);
+            foreach (Wish wish in model.WantWishes.GetWishList)
+            {
+                dbContext.Wishes.Add(wish);
+            }
+
+            foreach (Wish wish in model.NeedWishes.GetWishList)
+            {
+                dbContext.Wishes.Add(wish);
+            }
+            foreach (Wish wish in model.WearWishes.GetWishList)
+            {
+                dbContext.Wishes.Add(wish);
+            }
+
+            foreach (Wish wish in model.readWishes.GetWishList)
+            {
+                dbContext.Wishes.Add(wish);
+            }
+
+            int save = dbContext.SaveChanges();
+            return RedirectToAction("WishList", new {msg = "Changes Saved"});
         }
 
     }

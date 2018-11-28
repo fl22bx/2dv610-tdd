@@ -17,11 +17,13 @@ namespace _2dv610_TDD.Controllers
     {
         public IAppContext dbContext { get; set; }
         private WishListFactory WishListFactory { get; }
+        private UserManager<AuthUser> UserManager { get; set; }
         public WishListController(WishListFactory factory, UserManager<AuthUser> userManager, IAppContext context)
         {
 
             WishListFactory = factory;
             dbContext = context;
+            UserManager = userManager;
         }
 
         [Route("/YourWishlist")]
@@ -53,6 +55,8 @@ namespace _2dv610_TDD.Controllers
         {
             foreach (Wish wish in model)
             {
+                wish.AuthorId = UserManager.GetUserId(User);
+                wish.Category = cat;
                 dbContext.Wishes.Add(wish);
             }
         }

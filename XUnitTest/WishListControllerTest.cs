@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
@@ -29,6 +30,7 @@ namespace XUnitTest
             context.Wishes = Mock.Of<DbSet<Wish>>();
 
             Mock<UserManagerStub> UserManagerMoq = new Mock<UserManagerStub>();
+            UserManagerMoq.Setup(x => x.GetUserId(It.IsAny<ClaimsPrincipal>())).Returns("UserId");
             WishListFactory FactoryMock = new WishListFactory(context);
 
             Mock.Get(context).Setup(x => x.SaveChanges()).Returns(1);

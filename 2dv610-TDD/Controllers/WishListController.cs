@@ -32,6 +32,11 @@ namespace _2dv610_TDD.Controllers
             // todo: Model Sent to View handle it !!!
             ViewBag.msg = msg;
             WishListVieModel model = WishListFactory.PopulateWishListViewModel(UserManager.GetUserId(User));
+            ValidateViewModel(model.WantWishes.GetWishList);
+            ValidateViewModel(model.NeedWishes.GetWishList);
+            ValidateViewModel(model.readWishes.GetWishList);
+            ValidateViewModel(model.WearWishes.GetWishList);
+
             return View(model);
 
         }
@@ -60,6 +65,18 @@ namespace _2dv610_TDD.Controllers
                 wish.AuthorId = UserManager.GetUserId(User);
                 wish.Category = cat;
                 dbContext.Wishes.Add(wish);
+            }
+        }
+
+        private void ValidateViewModel(List<Wish> model)
+        {
+            if (model.Count < 5)
+            {
+                int tmp = 5 - model.Count;
+                for (int i = 0; i < tmp; i++)
+                {
+                    model.Add(new Wish());
+                }
             }
         }
 

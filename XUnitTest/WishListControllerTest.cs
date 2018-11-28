@@ -65,10 +65,10 @@ namespace XUnitTest
         {
             ViewResult Result = (ViewResult)Sut.WishList();
             WishListVieModel Actual = (WishListVieModel)Result.ViewData.Model;
-            Assert.Equal(4, Actual.NeedWishes.GetWishList.Count);
-            Assert.Equal(4, Actual.WantWishes.GetWishList.Count);
-            Assert.Equal(4, Actual.WearWishes.GetWishList.Count);
-            Assert.Equal(4, Actual.readWishes.GetWishList.Count);
+            Assert.Equal(5, Actual.NeedWishes.GetWishList.Count);
+            Assert.Equal(5, Actual.WantWishes.GetWishList.Count);
+            Assert.Equal(5, Actual.WearWishes.GetWishList.Count);
+            Assert.Equal(5, Actual.readWishes.GetWishList.Count);
 
         }
 

@@ -7,6 +7,7 @@ namespace _2dv610_TDD.Models.WishList
 {
     public class Wish
 {
+
     public CategoriesEnum Category { get; set; }
 
     private decimal price;
@@ -20,6 +21,8 @@ namespace _2dv610_TDD.Models.WishList
             price = value;
         }
     }
+
+    public Guid Id { get; set; }
 
     public string Description { get; set; }
 

@@ -67,5 +67,12 @@ namespace XUnitTest
             Sut.AuthorId = "d883f4d2 - 3986 - 4840 - b9cb - ff4db8d67d66";
             Assert.NotNull(Sut.AuthorId);
         }
+
+        [Fact]
+        public void UniqueId()
+        {
+            string defaultvalue = "00000000-0000-0000-0000-000000000000";
+            Assert.NotEqual(defaultvalue, Sut.Id.ToString());
+        }
     }
 }

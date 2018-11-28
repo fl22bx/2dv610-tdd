@@ -44,7 +44,25 @@ namespace _2dv610_TDD.Controllers
         [Route("/SaveWishList")]
         public RedirectToActionResult Save(WishListVieModel model)
         {
-          
+            WishListVieModel OldValues = WishListFactory.PopulateWishListViewModel(UserManager.GetUserId(User));
+            foreach (Wish wish in OldValues.WantWishes.GetWishList)
+            {
+                dbContext.Remove(wish);
+            }
+            foreach (Wish wish in OldValues.NeedWishes.GetWishList)
+            {
+                dbContext.Remove(wish);
+            }
+            foreach (Wish wish in OldValues.readWishes.GetWishList)
+            {
+                dbContext.Remove(wish);
+            }
+            foreach (Wish wish in OldValues.WearWishes.GetWishList)
+            {
+                dbContext.Remove(wish);
+            }
+            dbContext.SaveChanges();
+
             AddToContext(model.WantWishes.GetWishList, CategoriesEnum.Want);
             AddToContext(model.NeedWishes.GetWishList, CategoriesEnum.Need);
             AddToContext(model.WearWishes.GetWishList, CategoriesEnum.Wear);
@@ -55,6 +73,7 @@ namespace _2dv610_TDD.Controllers
 
             if (save > 0)
                 msg = "Changes Saved";
+
             return RedirectToAction("WishList", new { msg });
         }
 

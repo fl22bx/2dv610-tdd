@@ -17,7 +17,7 @@
                     <h2>Need</h2>
                     <span>
                         1:<input value="" asp-for="NeedWishes.GetWishList[0].Name" value="@Model.NeedWishes.GetWishList[0].Name" />
-                        Pris:<input class="price" asp-for="NeedWishes.GetWishList[0].Price" value="" />
+                        Pris:<input class="price" asp-for="NeedWishes.GetWishList[0].Price" value="@Model.NeedWishes.GetWishList[0].Price" />
                     </span>
                     <span>
                         2:<input value="" asp-for="NeedWishes.GetWishList[1].Name" value="@Model.NeedWishes.GetWishList[1].Name"/>
@@ -41,24 +41,24 @@
                 <div class="mx-auto w-75">
                     <h2>Want</h2>
                     <span>
-                        1:<input asp-for="WantWishes.GetWishList[0].Name" value="" />
-                        Pris:<input class="price" asp-for="WantWishes.GetWishList[0].Price" value="" />
+                        1:<input asp-for="WantWishes.GetWishList[0].Name" value="@Model.WantWishes.GetWishList[0].Name" />
+                        Pris:<input class="price" asp-for="WantWishes.GetWishList[0].Price" />
                     </span>
                     <span>
-                        2:<input asp-for="WantWishes.GetWishList[1].Name" value="" />
-                        Pris:<input class="price" asp-for="WantWishes.GetWishList[1].Price" value="" />
+                        2:<input asp-for="WantWishes.GetWishList[1].Name" value="@Model.WantWishes.GetWishList[1].Name" />
+                        Pris:<input class="price" asp-for="WantWishes.GetWishList[1].Price" value="@Model.WantWishes.GetWishList[1].Price" />
                     </span>
                     <span>
-                        3:<input asp-for="WantWishes.GetWishList[2].Name" value="" />
-                        Pris:<input class="price" asp-for="WantWishes.GetWishList[2].Price" value="" />
+                        3:<input asp-for="WantWishes.GetWishList[2].Name" value="@Model.WantWishes.GetWishList[2].Name" />
+                        Pris:<input class="price" asp-for="WantWishes.GetWishList[2].Price" value="@Model.WantWishes.GetWishList[2].Price" />
                     </span>
                     <span>
-                        4:<input asp-for="WantWishes.GetWishList[3].Name" value="" />
-                        Pris:<input class="price" asp-for="WantWishes.GetWishList[3].Price" value="" />
+                        4:<input asp-for="WantWishes.GetWishList[3].Name" value="@Model.WantWishes.GetWishList[3].Name" />
+                        Pris:<input class="price" asp-for="WantWishes.GetWishList[3].Price" value="@Model.WantWishes.GetWishList[3].Price" />
                     </span>
                     <span>
-                        5:<input asp-for="WantWishes.GetWishList[4].Name" value="" />
-                        Pris:<input class="price" asp-for="WantWishes.GetWishList[4].Price" value="" />
+                        5:<input asp-for="WantWishes.GetWishList[4].Name" value="@Model.WantWishes.GetWishList[4].Name" />
+                        Pris:<input class="price" asp-for="WantWishes.GetWishList[4].Price" value="@Model.WantWishes.GetWishList[4].Price" />
                     </span>
 
 
@@ -70,24 +70,24 @@
                 <div class="mx-auto w-75">
                     <h2>Read</h2>
                     <span>
-                        1:<input asp-for="readWishes.GetWishList[0].Name" value=""/>
-                        Pris:<input class="price" asp-for="readWishes.GetWishList[0].Price" value=""/>
+                        1:<input asp-for="readWishes.GetWishList[0].Name" value="@Model.readWishes.GetWishList[0].Name"/>
+                        Pris:<input class="price" asp-for="readWishes.GetWishList[0].Price" value="@Model.readWishes.GetWishList[0].Price"/>
                     </span>
                     <span>
-                        2:<input asp-for="readWishes.GetWishList[1].Name" value=""/>
-                        Pris:<input class="price"  asp-for="readWishes.GetWishList[1].Price"  value=""/>
+                        2:<input asp-for="readWishes.GetWishList[1].Name" value="@Model.readWishes.GetWishList[1].Name"/>
+                        Pris:<input class="price"  asp-for="readWishes.GetWishList[1].Price"  value="@Model.readWishes.GetWishList[1].Price"/>
                     </span>
                     <span>
-                        3:<input asp-for="readWishes.GetWishList[2].Name" value=""/>
-                        Pris:<input class="price" asp-for="readWishes.GetWishList[2].Price"  value=""/>
+                        3:<input asp-for="readWishes.GetWishList[2].Name" value="@Model.readWishes.GetWishList[2].Name"/>
+                        Pris:<input class="price" asp-for="readWishes.GetWishList[2].Price"  value="@Model.readWishes.GetWishList[2].Price"/>
                     </span>
                     <span>
-                        4:<input asp-for="readWishes.GetWishList[3].Name" value=""/>
-                        Pris:<input class="price" asp-for="readWishes.GetWishList[3].Price"  value=""/>
+                        4:<input asp-for="readWishes.GetWishList[3].Name" value="@Model.readWishes.GetWishList[3].Name"/>
+                        Pris:<input class="price" asp-for="readWishes.GetWishList[3].Price"  value="@Model.readWishes.GetWishList[3].Price"/>
                     </span>
                     <span>
-                        5:<input asp-for="readWishes.GetWishList[4].Name" value=""/>
-                        Pris:<input class="price" asp-for="readWishes.GetWishList[4].Price" value=""/>
+                        5:<input asp-for="readWishes.GetWishList[4].Name" value="@Model.readWishes.GetWishList[4].Name"/>
+                        Pris:<input class="price" asp-for="readWishes.GetWishList[4].Price" value="@Model.readWishes.GetWishList[4].Price"/>
                     </span>
                 </div>
             </fieldset>
@@ -96,24 +96,24 @@
                 <div class="mx-auto w-75">
                     <h2>Wear</h2>
                     <span>
-                        1:<input asp-for="WearWishes.GetWishList[0].Name" value="" />
-                        Pris:<input class="price" asp-for="WearWishes.GetWishList[0].Price" value="" />
+                        1:<input asp-for="WearWishes.GetWishList[0].Name" value="@Model.WearWishes.GetWishList[0].Name" />
+                        Pris:<input class="price" asp-for="WearWishes.GetWishList[0].Price" value="@Model.WearWishes.GetWishList[0].Price" />
                     </span>
                     <span>
-                        2:<inputasp-for="WearWishes.GetWishList[0].Name" value="" />
-                        Pris:<input class="price" asp-for="WearWishes.GetWishList[1].Price" value="" />
+                        2:<input asp-for="WearWishes.GetWishList[1].Name" value="@Model.WearWishes.GetWishList[1].Name" />
+                        Pris:<input class="price" asp-for="WearWishes.GetWishList[1].Price" value="@Model.WearWishes.GetWishList[1].Price" />
                     </span>
                     <span>
-                        3:<input asp-for="WearWishes.GetWishList[0].Name" value="" />
-                        Pris:<input class="price" asp-for="WearWishes.GetWishList[2].Price" value="" />
+                        3:<input asp-for="WearWishes.GetWishList[2].Name" value="@Model.WearWishes.GetWishList[2].Name" />
+                        Pris:<input class="price" asp-for="WearWishes.GetWishList[2].Price" value="@Model.WearWishes.GetWishList[2].Price" />
                     </span>
                     <span>
-                        4:<input asp-for="WearWishes.GetWishList[0].Name" value="" />
-                        Pris:<input class="price" asp-for="WearWishes.GetWishList[3].Price" value="" />
+                        4:<input asp-for="WearWishes.GetWishList[3].Name" value="@Model.WearWishes.GetWishList[3].Name" />
+                        Pris:<input class="price" asp-for="WearWishes.GetWishList[3].Price" value="@Model.WearWishes.GetWishList[3].Price" />
                     </span>
                     <span>
-                        5:<input asp-for="WearWishes.GetWishList[0].Name" value="" />
-                        Pris:<input class="price" asp-for="WearWishes.GetWishList[4].Price" value="" />
+                        5:<input asp-for="WearWishes.GetWishList[4].Name" value="@Model.WearWishes.GetWishList[4].Name" />
+                        Pris:<input class="price" asp-for="WearWishes.GetWishList[4].Price" value="@Model.WearWishes.GetWishList[4].Price" />
                     </span>
                 </div>
             </fieldset>

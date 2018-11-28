@@ -29,6 +29,7 @@ namespace _2dv610_TDD.Controllers
         [Route("/YourWishlist")]
         public IActionResult WishList(string msg = null)
         {
+            // todo: Model Sent to View handle it !!!
             ViewBag.msg = msg;
             WishListVieModel model = WishListFactory.PopulateWishListViewModel(UserManager.GetUserId(User));
             return View(model);

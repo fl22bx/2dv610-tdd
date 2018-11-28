@@ -46,6 +46,7 @@ namespace _2dv610_TDD.Models.WishList
 
         public virtual WishListVieModel PopulateWishListViewModel(string CurrentUserId)
         {
+            //todo: mpåste ha min 4 
             WishListVieModel Result = new WishListVieModel();
 
             List<Wish> need = EntityQuery(CategoriesEnum.Need, CurrentUserId);
@@ -68,7 +69,8 @@ namespace _2dv610_TDD.Models.WishList
                       wish.AuthorId == id
                                select wish);
 
-            return  QueryResult.ToList();
+            return QueryResult.ToList();
+
         }
 
     }

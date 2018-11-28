@@ -17,7 +17,7 @@ namespace _2dv610_TDD.Controllers
     {
         public AppDbContext dbContext { get; set; }
         private WishListFactory WishListFactory { get; }
-        public WishListController(WishListFactory factory, UserManager<AuthUser> userManager)
+        public WishListController(WishListFactory factory, UserManager<AuthUser> userManager, IAppContext context)
         {
             WishListFactory = factory;
         }

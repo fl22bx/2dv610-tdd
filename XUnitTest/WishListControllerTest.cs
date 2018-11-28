@@ -25,11 +25,13 @@ namespace XUnitTest
         public WishListController Sut { get; set; }
         public WishListControllerTest()
         {
-            var test = new Mock<IAppContext>();
-            Mock<UserManagerStub> UserManagerMoq = new Mock<UserManagerStub>();
-            WishListFactory FactoryMock = new WishListFactory(test.Object);
+            var context = Mock.Of<IAppContext>();
+            context.Wishes = Mock.Of<DbSet<Wish>>();
 
-            Sut = new WishListController(FactoryMock, UserManagerMoq.Object);
+            Mock<UserManagerStub> UserManagerMoq = new Mock<UserManagerStub>();
+            WishListFactory FactoryMock = new WishListFactory(context);
+
+            Sut = new WishListController(FactoryMock, UserManagerMoq.Object, context);
         }
 
         [Fact]
@@ -43,16 +45,68 @@ namespace XUnitTest
         [Fact]
         public void PostSaveWishListTest()
         { 
-           // todo: egen db qury class ej i constructor, i factory?
-
+      
+           
            var mockModel = Mock.Of<WishListVieModel>();
-           var Result = Sut.Save(mockModel);
+            mockModel.WearWishes = Mock.Of<WishList>();
+            mockModel.NeedWishes = Mock.Of<WishList>();
+            mockModel.WantWishes = Mock.Of<WishList>();
+            mockModel.readWishes = Mock.Of<WishList>();
 
+            mockModel.WearWishes.GetWishList = Setup();
+            mockModel.NeedWishes.GetWishList = Setup();
+            mockModel.WantWishes.GetWishList = Setup();
+            mockModel.readWishes.GetWishList = Setup();
+
+            var Result = Sut.Save(mockModel);
 
             RedirectToActionResult Actual = (RedirectToActionResult)Result;
 
+            Assert.NotNull(Sut.TempData["flash"]);
             Assert.Equal("WishList", Actual.ActionName);
 
+        }
+
+        private List<Wish> Setup()
+        {
+            var wishMockNeed = Mock.Of<Wish>();
+            wishMockNeed.Price = 10;
+            wishMockNeed.Category = CategoriesEnum.Need;
+
+            var wishMockWant = Mock.Of<Wish>();
+            wishMockWant.Price = 20;
+            wishMockWant.Category = CategoriesEnum.Want;
+
+            var wishMockWear = Mock.Of<Wish>();
+            wishMockWear.Price = 30;
+            wishMockWear.Category = CategoriesEnum.Wear;
+
+            var wishMockRead = Mock.Of<Wish>();
+            wishMockRead.Price = 40;
+            wishMockRead.Category = CategoriesEnum.Read;
+
+            return new List<Wish>
+            {
+                wishMockNeed,
+                wishMockWant,
+                wishMockWear,
+                wishMockRead,
+
+                wishMockNeed,
+                wishMockWant,
+                wishMockWear,
+                wishMockRead,
+
+                wishMockNeed,
+                wishMockWant,
+                wishMockWear,
+                wishMockRead,
+
+                wishMockNeed,
+                wishMockWant,
+                wishMockWear,
+                wishMockRead,
+            };
         }
     }
 }

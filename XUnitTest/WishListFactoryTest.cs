@@ -20,10 +20,8 @@ namespace XUnitTest
 
             public WishListFacatoryTest()
             {
-               var MockUsermanager = new Mock<UserManagerStub>();
-                MockUsermanager.Setup(x => x.GetUserId(It.IsAny<ClaimsPrincipal>())).Returns("valid");
 
-                Sut = new WishListFactory(DbContextMockSetub(), MockUsermanager.Object);
+                Sut = new WishListFactory(DbContextMockSetub());
             }
 
             public IAppContext DbContextMockSetub()
@@ -37,17 +35,17 @@ namespace XUnitTest
                 var wishMockWant = Mock.Of<Wish>();
                 wishMockWant.Price = 20;
                 wishMockWant.Category = CategoriesEnum.Want;
-                wishMockNeed.AuthorId = "valid";
+                wishMockWant.AuthorId = "valid";
 
                 var wishMockWear = Mock.Of<Wish>();
                 wishMockWear.Price = 30;
                 wishMockWear.Category = CategoriesEnum.Wear;
-                wishMockNeed.AuthorId = "valid";
+                wishMockWear.AuthorId = "valid";
 
                 var wishMockRead = Mock.Of<Wish>();
                 wishMockRead.Price = 40;
                 wishMockRead.Category = CategoriesEnum.Read;
-                wishMockNeed.AuthorId = "valid";
+                wishMockRead.AuthorId = "valid";
 
                 var DbResultMock = new List<Wish>
                         {
@@ -89,11 +87,7 @@ namespace XUnitTest
             [Fact]
             public void noUserAuthorShouldNotReturnAnything()
             {
-                var MockUsermanager = new Mock<UserManagerStub>();
-                MockUsermanager.Setup(x => x.GetUserId(It.IsAny<ClaimsPrincipal>())).Returns("UserId");
-                Sut = new WishListFactory(DbContextMockSetub(), MockUsermanager.Object);
-                WishListVieModel Actual = Sut.PopulateWishListViewModel();
-                var test = Actual.WantWishes.GetWishList;
+                WishListVieModel Actual = Sut.PopulateWishListViewModel("Empty");
                 Assert.Empty(Actual.WantWishes.GetWishList);
                 Assert.Empty(Actual.readWishes.GetWishList);
                 Assert.Empty(Actual.NeedWishes.GetWishList);
@@ -133,7 +127,7 @@ namespace XUnitTest
             [Fact]
             public void ShouldReturnPopulatedWishViewModel()
             {
-                WishListVieModel Actual = Sut.PopulateWishListViewModel();
+                WishListVieModel Actual = Sut.PopulateWishListViewModel("valid");
                 Assert.Equal(4, Actual.NeedWishes.GetWishList.Count);
                 Assert.Equal(4, Actual.WantWishes.GetWishList.Count);
                 Assert.Equal(4, Actual.WearWishes.GetWishList.Count);

@@ -33,7 +33,6 @@ namespace _2dv610_TDD
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
             services.AddMvc();
-
             services.AddTransient<WishListFactory>();
             services.AddTransient<IAppContext, AppDbContext>();
             services.AddSession();

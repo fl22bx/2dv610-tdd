@@ -12,9 +12,11 @@ namespace _2dv610_TDD.Models.WishList
 {
     public class WishListFactory
     {
-        public IAppContext Context { get; set; }
+        private IAppContext Context { get; set; }
+        
 
-        public WishListFactory(IAppContext context, UserManager<AuthUser> Usermanager)
+
+        public WishListFactory(IAppContext context)
         {
             Context = context;
         }
@@ -42,14 +44,14 @@ namespace _2dv610_TDD.Models.WishList
            return Result;
         }
 
-        public WishListVieModel PopulateWishListViewModel()
+        public WishListVieModel PopulateWishListViewModel(string CurrentUserId)
         {
             WishListVieModel Result = new WishListVieModel();
 
-            List<Wish> need = EntityQuery(CategoriesEnum.Need);
-            List<Wish> want = EntityQuery(CategoriesEnum.Want);
-            List<Wish> wear = EntityQuery(CategoriesEnum.Wear);
-            List<Wish> read = EntityQuery(CategoriesEnum.Read);
+            List<Wish> need = EntityQuery(CategoriesEnum.Need, CurrentUserId);
+            List<Wish> want = EntityQuery(CategoriesEnum.Want, CurrentUserId);
+            List<Wish> wear = EntityQuery(CategoriesEnum.Wear, CurrentUserId);
+            List<Wish> read = EntityQuery(CategoriesEnum.Read, CurrentUserId);
 
             Result.NeedWishes = NewWishList(need);
             Result.WantWishes = NewWishList(want);
@@ -59,11 +61,12 @@ namespace _2dv610_TDD.Models.WishList
             return Result;
         }
 
-        private List<Wish> EntityQuery(CategoriesEnum cat)
+        private List<Wish> EntityQuery(CategoriesEnum cat, string id)
         {
             var QueryResult = (from wish in Context.Wishes
-                where wish.Category == cat
-                select wish);
+                where wish.Category == cat &&
+                      wish.AuthorId == id
+                               select wish);
 
             return  QueryResult.ToList();
         }

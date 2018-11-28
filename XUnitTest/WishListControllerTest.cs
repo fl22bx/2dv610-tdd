@@ -31,7 +31,7 @@ namespace XUnitTest
 
             Mock<UserManagerStub> UserManagerMoq = new Mock<UserManagerStub>();
             UserManagerMoq.Setup(x => x.GetUserId(It.IsAny<ClaimsPrincipal>())).Returns("UserId");
-            WishListFactory FactoryMock = new WishListFactory(context);
+            WishListFactory FactoryMock = new WishListFactory(context, UserManagerMoq.Object);
 
             Mock.Get(context).Setup(x => x.SaveChanges()).Returns(1);
 

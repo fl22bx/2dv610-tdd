@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Moq;
@@ -19,7 +20,10 @@ namespace XUnitTest
 
             public WishListFacatoryTest()
             {
-                Sut = new WishListFactory(DbContextMockSetub());
+               var MockUsermanager = new Mock<UserManagerStub>();
+                MockUsermanager.Setup(x => x.GetUserId(It.IsAny<ClaimsPrincipal>())).Returns("valid");
+
+                Sut = new WishListFactory(DbContextMockSetub(), MockUsermanager.Object);
             }
 
             public IAppContext DbContextMockSetub()
@@ -28,18 +32,22 @@ namespace XUnitTest
                 var wishMockNeed = Mock.Of<Wish>();
                 wishMockNeed.Price = 10;
                 wishMockNeed.Category = CategoriesEnum.Need;
+                wishMockNeed.AuthorId = "valid";
 
                 var wishMockWant = Mock.Of<Wish>();
                 wishMockWant.Price = 20;
                 wishMockWant.Category = CategoriesEnum.Want;
+                wishMockNeed.AuthorId = "valid";
 
                 var wishMockWear = Mock.Of<Wish>();
                 wishMockWear.Price = 30;
                 wishMockWear.Category = CategoriesEnum.Wear;
+                wishMockNeed.AuthorId = "valid";
 
                 var wishMockRead = Mock.Of<Wish>();
                 wishMockRead.Price = 40;
                 wishMockRead.Category = CategoriesEnum.Read;
+                wishMockNeed.AuthorId = "valid";
 
                 var DbResultMock = new List<Wish>
                         {
@@ -76,6 +84,21 @@ namespace XUnitTest
 
 
                 return MockRepository;
+            }
+
+            [Fact]
+            public void noUserAuthorShouldNotReturnAnything()
+            {
+                var MockUsermanager = new Mock<UserManagerStub>();
+                MockUsermanager.Setup(x => x.GetUserId(It.IsAny<ClaimsPrincipal>())).Returns("UserId");
+                Sut = new WishListFactory(DbContextMockSetub(), MockUsermanager.Object);
+                WishListVieModel Actual = Sut.PopulateWishListViewModel();
+                var test = Actual.WantWishes.GetWishList;
+                Assert.Empty(Actual.WantWishes.GetWishList);
+                Assert.Empty(Actual.readWishes.GetWishList);
+                Assert.Empty(Actual.NeedWishes.GetWishList);
+                Assert.Empty(Actual.WearWishes.GetWishList);
+
             }
 
             [Fact]

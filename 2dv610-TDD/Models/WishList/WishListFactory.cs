@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using _2dv610_TDD.Models.Authentication;
 using _2dv610_TDD.Models.Data;
 using _2dv610_TDD.ViewModels;
 
@@ -12,7 +14,7 @@ namespace _2dv610_TDD.Models.WishList
     {
         public IAppContext Context { get; set; }
 
-        public WishListFactory(IAppContext context)
+        public WishListFactory(IAppContext context, UserManager<AuthUser> Usermanager)
         {
             Context = context;
         }

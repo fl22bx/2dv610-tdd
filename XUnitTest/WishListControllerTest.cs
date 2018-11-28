@@ -47,6 +47,14 @@ namespace XUnitTest
         }
 
         [Fact]
+        public void WishListShouldContainModel()
+        {
+            ViewResult Result = (ViewResult)Sut.WishList();
+            var Actual = Result.ViewData.Model;
+            Assert.NotNull(Actual);
+        }
+
+        [Fact]
         public void WishListViewBagTest()
         {
             string Expected = "Message To Send";

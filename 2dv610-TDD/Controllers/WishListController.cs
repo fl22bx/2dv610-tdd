@@ -30,7 +30,8 @@ namespace _2dv610_TDD.Controllers
         public IActionResult WishList(string msg = null)
         {
             ViewBag.msg = msg;
-            return View();
+            WishListVieModel model = WishListFactory.PopulateWishListViewModel(UserManager.GetUserId(User));
+            return View(model);
 
         }
 

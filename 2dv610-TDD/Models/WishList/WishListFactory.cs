@@ -44,7 +44,7 @@ namespace _2dv610_TDD.Models.WishList
            return Result;
         }
 
-        public WishListVieModel PopulateWishListViewModel(string CurrentUserId)
+        public virtual WishListVieModel PopulateWishListViewModel(string CurrentUserId)
         {
             WishListVieModel Result = new WishListVieModel();
 

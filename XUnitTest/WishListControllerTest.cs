@@ -31,11 +31,17 @@ namespace XUnitTest
 
             Mock<UserManagerStub> UserManagerMoq = new Mock<UserManagerStub>();
             UserManagerMoq.Setup(x => x.GetUserId(It.IsAny<ClaimsPrincipal>())).Returns("UserId");
-            WishListFactory FactoryMock = new WishListFactory(context);
+
+            var test = Mock.Of<WishListVieModel>();
+
+            var FactoryMock = new Mock<WishListFactory>(context);
+
+            FactoryMock.Setup(x => x.PopulateWishListViewModel(It.IsAny<string>()))
+                .Returns(test);
 
             Mock.Get(context).Setup(x => x.SaveChanges()).Returns(1);
 
-            Sut = new WishListController(FactoryMock, UserManagerMoq.Object, context);
+            Sut = new WishListController(FactoryMock.Object, UserManagerMoq.Object, context);
         }
 
         [Fact]

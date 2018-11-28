@@ -19,6 +19,7 @@ namespace _2dv610_TDD.Controllers
         private WishListFactory WishListFactory { get; }
         public WishListController(WishListFactory factory, UserManager<AuthUser> userManager, IAppContext context)
         {
+
             WishListFactory = factory;
             dbContext = context;
         }
@@ -35,10 +36,10 @@ namespace _2dv610_TDD.Controllers
         public RedirectToActionResult Save(WishListVieModel model)
         {
           
-            AddToContext(model.WantWishes.GetWishList);
-            AddToContext(model.NeedWishes.GetWishList);
-            AddToContext(model.WearWishes.GetWishList);
-            AddToContext(model.readWishes.GetWishList);
+            AddToContext(model.WantWishes.GetWishList, CategoriesEnum.Want);
+            AddToContext(model.NeedWishes.GetWishList, CategoriesEnum.Need);
+            AddToContext(model.WearWishes.GetWishList, CategoriesEnum.Wear);
+            AddToContext(model.readWishes.GetWishList, CategoriesEnum.Read);
 
             int save = dbContext.SaveChanges();
             string msg = null;
@@ -48,7 +49,7 @@ namespace _2dv610_TDD.Controllers
             return RedirectToAction("WishList", new { msg });
         }
 
-        private void AddToContext(List<Wish> model)
+        private void AddToContext(List<Wish> model, CategoriesEnum cat)
         {
             foreach (Wish wish in model)
             {

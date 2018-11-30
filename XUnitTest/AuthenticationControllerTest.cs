@@ -68,7 +68,6 @@ namespace XUnitTest
             var Result = await Sut.Register(MockViewModel.Object);
             ViewResult Actual = (ViewResult) Result;
             Assert.NotNull(Actual.ViewData.ModelState);
-            Assert.Equal("Register", Actual.ViewName);
 
             
         }

@@ -66,7 +66,11 @@ namespace _2dv610_TDD.Controllers
             IdentityResult CreateNewUserResult = await UserManager.CreateAsync(newUser, Model.Password);
 
             if (!CreateNewUserResult.Succeeded)
+            {
                 ModelState.AddModelError("", "Registration Failed. Please Try Again");
+                return View();
+            }
+              
 
             if (CreateNewUserResult.Succeeded)
                 await SignInManager.SignInAsync(newUser, false);

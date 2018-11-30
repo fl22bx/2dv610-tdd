@@ -71,6 +71,11 @@ namespace _2dv610_TDD.Controllers
             await SignInManager.SignInAsync(newUser, false);
             return RedirectToAction("Index", "Home");
         }
+
+        public async Task<IActionResult> SignOut()
+        {
+            return StatusCode(500);
+        }
     }
 }
 

@@ -83,6 +83,17 @@ namespace XUnitTest
             Assert.IsType<RedirectToActionResult>(Result.Result);
         }
 
+        [Fact]
+        public async void SignOutShouldReturnLogInView()
+        {
+            var sut = new AuthenticationController(UserManagerMoq.Object, SignInManagerMoq.Object);
+            Task<IActionResult> Result =  sut.SignOut();
+            Assert.IsType<RedirectToActionResult>(Result.Result);
+            RedirectToActionResult Actual = (RedirectToActionResult) Result;
+            Assert.Equal("LogIn", Actual.ActionName);
+            
+        }
+
     }
 }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using _2dv610_TDD.Models;
@@ -47,21 +48,11 @@ namespace _2dv610_TDD.Controllers
             var result = await SignInManager.PasswordSignInAsync(Model.Username, Model.Password, false, false);
 
             if (result.Succeeded)
-                return RedirectToAction("LoggedIn");
+                return RedirectToAction("WishList", "WishList");
 
-            return RedirectToAction("LogInForm");
+            return RedirectToAction("Register");
 
 
-        }
-
-        public IActionResult LoggedIn()
-        {
-            return StatusCode(200);
-        }
-
-        public IActionResult LogInForm()
-        {
-            return StatusCode(200);
         }
 
         /// <summary>

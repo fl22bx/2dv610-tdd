@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ using _2dv610_TDD.ViewModels;
 
 namespace _2dv610_TDD.Controllers
 {
+    [Authorize]
     public class WishListController : Controller
     {
         private IAppContext dbContext { get; set; }

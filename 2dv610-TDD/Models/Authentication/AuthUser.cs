@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Identity;
 
 namespace _2dv610_TDD.Models.Authentication
 {
+    /// <summary>
+    /// ApplicationUser
+    /// Inherits from Identityuser, Ef Core
+    /// </summary>
     public class AuthUser : IdentityUser
     {
     

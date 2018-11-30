@@ -2,6 +2,9 @@
 
 namespace _2dv610_TDD.ViewModels
 {
+    /// <summary>
+    /// ViewModel to create wishlist in View
+    /// </summary>
     public class WishListVieModel
 {
     public WishListVieModel()

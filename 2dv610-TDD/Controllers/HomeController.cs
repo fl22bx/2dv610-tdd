@@ -10,7 +10,10 @@ namespace _2dv610_TDD.Controllers
 {
     public class HomeController : Controller
 {
-    // GET: /<controller>/
+    /// <summary>
+    /// Start Page
+    /// </summary>
+    /// <returns></returns>
     public ViewResult Index()
     {
         return View();

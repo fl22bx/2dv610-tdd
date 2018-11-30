@@ -23,20 +23,28 @@ namespace _2dv610_TDD
         {
             Congiguration = congiguration;
         }
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+
         public void ConfigureServices(IServiceCollection services)
         {
+            // Database Connection
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Congiguration.GetConnectionString("DefaultConnection")));
+
+            // Ef Core Identity service
             services.AddDefaultIdentity<AuthUser>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
             services.AddMvc();
+
+            // Dependency Inject WishList Factory
             services.AddTransient<WishListFactory>();
+
+            // Dependency Inject Context Service
             services.AddTransient<IAppContext, AppDbContext>();
+
             services.AddSession();
 
+            // EF Cores Indentity Conditions for Password and User
             services.Configure<IdentityOptions>(options =>
             {
 
@@ -49,7 +57,6 @@ namespace _2dv610_TDD
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())

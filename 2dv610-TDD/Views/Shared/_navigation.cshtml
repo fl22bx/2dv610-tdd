@@ -9,7 +9,15 @@
         <h1 class="pr-5">@ViewBag.Title</h1>
     </div>
     <div class="w-100 order-2">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a asp-controller="WishList" asp-action="WishList">WishList</a>
 
+                </li>
+            </ul>
+        }
     </div>
 
     <div class="navbar-collapse collapse w-100 order-3">

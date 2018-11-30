@@ -10,6 +10,10 @@ using _2dv610_TDD.Models.Authentication;
 
 namespace _2dv610_TDD.Controllers
 {
+    /// <summary>
+    /// Handles All Authenticaation and registration calls from Client
+    /// Uses EntityFramework Core Identity API
+    /// </summary>
     public class AuthenticationController : Controller
     {
         private UserManager<AuthUser> UserManager { get; set; }
@@ -21,12 +25,22 @@ namespace _2dv610_TDD.Controllers
             SignInManager = signInManager;
         }
 
+        /// <summary>
+        /// Renders the Login Form
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult LogIn()
         {
             return View();
         }
 
+        /// <summary>
+        /// Tries to validate LogIn coming in v
+        /// 
+        /// </summary>
+        /// <param name="Model"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> LogIn(UserViewModel Model)
         {
@@ -50,11 +64,20 @@ namespace _2dv610_TDD.Controllers
             return StatusCode(200);
         }
 
+        /// <summary>
+        /// Renders Register Form
+        /// </summary>
+        /// <returns></returns>
         public ViewResult Register()
         {
             return View();
         }
 
+        /// <summary>
+        /// Handel register information via post request
+        /// </summary>
+        /// <param name="Model"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Register(UserViewModel Model)
         {
@@ -77,6 +100,10 @@ namespace _2dv610_TDD.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        /// <summary>
+        /// Signs out user and redirects to login page
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> SignOut()
         {

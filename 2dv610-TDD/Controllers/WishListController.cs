@@ -15,7 +15,7 @@ namespace _2dv610_TDD.Controllers
 {
     public class WishListController : Controller
     {
-        public IAppContext dbContext { get; set; }
+        private IAppContext dbContext { get; set; }
         private WishListFactory WishListFactory { get; }
         private UserManager<AuthUser> UserManager { get; set; }
         public WishListController(WishListFactory factory, UserManager<AuthUser> userManager, IAppContext context)
@@ -26,10 +26,16 @@ namespace _2dv610_TDD.Controllers
             UserManager = userManager;
         }
 
+        /// <summary>
+        /// Renders WishList with populated wishList
+        /// Custome Route
+        /// Takes parameter Msg wish is displayed as flash Message in the view
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
         [Route("/YourWishlist")]
         public IActionResult WishList(string msg = null)
         {
-            // todo: Model Sent to View handle it !!!
             ViewBag.msg = msg;
             WishListVieModel model = WishListFactory.PopulateWishListViewModel(UserManager.GetUserId(User));
             ValidateViewModel(model.WantWishes.GetWishList);
@@ -41,6 +47,13 @@ namespace _2dv610_TDD.Controllers
 
         }
 
+
+        /// <summary>
+        /// Saves wishlist, removes odl values
+        /// Custome route
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("/SaveWishList")]
         public RedirectToActionResult Save(WishListVieModel model)
         {

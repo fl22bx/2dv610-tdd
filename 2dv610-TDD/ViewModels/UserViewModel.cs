@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace _2dv610_TDD.Models
 {
+    /// <summary>
+    /// Authentication view model
+    /// </summary>
     public class UserViewModel
     {
        [StringLength(20, MinimumLength=3)]

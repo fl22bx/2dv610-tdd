@@ -20,6 +20,12 @@ namespace _2dv610_TDD.Models.WishList
         {
             Context = context;
         }
+
+        /// <summary>
+        /// Creates WIshList from list of wishes
+        /// </summary>
+        /// <param name="wishes"></param>
+        /// <returns></returns>
         public WishList NewWishList(List<Wish> wishes)
         {
             WishList Result = new WishList();
@@ -31,6 +37,14 @@ namespace _2dv610_TDD.Models.WishList
             return Result;
         }
 
+        /// <summary>
+        /// Creates WishList ViewModel
+        /// </summary>
+        /// <param name="need"></param>
+        /// <param name="want"></param>
+        /// <param name="read"></param>
+        /// <param name="wear"></param>
+        /// <returns></returns>
         public WishListVieModel NewWishListViewModel(List<Wish> need, List<Wish> want, List<Wish> read, List<Wish> wear)
         {
 
@@ -44,9 +58,13 @@ namespace _2dv610_TDD.Models.WishList
            return Result;
         }
 
+        /// <summary>
+        /// Populates wishList with currentUsers wishes from Database
+        /// </summary>
+        /// <param name="CurrentUserId"></param>
+        /// <returns></returns>
         public virtual WishListVieModel PopulateWishListViewModel(string CurrentUserId)
         {
-            //todo: mpåste ha min 4 
             WishListVieModel Result = new WishListVieModel();
 
             List<Wish> need = EntityQuery(CategoriesEnum.Need, CurrentUserId);
@@ -62,6 +80,7 @@ namespace _2dv610_TDD.Models.WishList
             return Result;
         }
 
+   
         private List<Wish> EntityQuery(CategoriesEnum cat, string id)
         {
             var QueryResult = (from wish in Context.Wishes

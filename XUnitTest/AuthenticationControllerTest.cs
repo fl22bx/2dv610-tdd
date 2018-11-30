@@ -89,7 +89,7 @@ namespace XUnitTest
             var sut = new AuthenticationController(UserManagerMoq.Object, SignInManagerMoq.Object);
             Task<IActionResult> Result =  sut.SignOut();
             Assert.IsType<RedirectToActionResult>(Result.Result);
-            RedirectToActionResult Actual = (RedirectToActionResult) Result;
+            RedirectToActionResult Actual = (RedirectToActionResult) Result.Result;
             Assert.Equal("LogIn", Actual.ActionName);
             
         }

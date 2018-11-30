@@ -20,7 +20,10 @@
                    Welcome @UserManager.GetUserName(User);
                 </li>
                 <li class="nav-item">
-                    <button>SignOut</button>
+                    <form asp-controller="Authentication" asp-action="SignOut" method="post">
+                        <button type="submit">SignOut</button>
+                    </form>
+
                 </li>
             </ul>
         }

@@ -59,14 +59,15 @@ namespace XUnitTest
         }
 
         [Fact]
-        public void RegisterWithInValidCredentialsShouldReturnViewResult()
+        public async void RegisterWithInValidCredentialsShouldReturnViewResult()
         {
             var Sut = new AuthenticationController(UserManagerMoq.Object, SignInManagerMoq.Object);
 
             var MockViewModel = new Mock<UserViewModel>();
             Sut.ModelState.AddModelError("Password", "Error");
-            var Actual = Sut.Register(MockViewModel.Object);
-            Assert.IsType<ViewResult>(Actual.Result);
+            var Result = await Sut.Register(MockViewModel.Object);
+            ViewResult Actual = (ViewResult) Result;
+            Assert.Equal("Register", Actual.ViewName);
         }
 
         [Fact]

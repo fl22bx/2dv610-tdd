@@ -2,7 +2,10 @@
 
 
 <h2>Register</h2>
+<div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+</div>
 <Div class="mx-auto col-9">
     <form asp-controller="Authentication" asp-action="Register" method="post" class="form">
         <div class="form-group">

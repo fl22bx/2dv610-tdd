@@ -68,7 +68,8 @@ namespace _2dv610_TDD.Controllers
             if (!CreateNewUserResult.Succeeded)
                 ModelState.AddModelError("", "Registration Failed. Please Try Again");
 
-            await SignInManager.SignInAsync(newUser, false);
+            if (CreateNewUserResult.Succeeded)
+                await SignInManager.SignInAsync(newUser, false);
             return RedirectToAction("Index", "Home");
         }
 
